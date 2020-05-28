@@ -19,5 +19,5 @@ const gateway = new ApolloGateway({
 const server = new ApolloServer({ gateway, subscriptions: false });
 
 server.listen({ port: config.appConfig.serverPort }).then(({ url }) => {
-  console.log(`Server Started : ${url}`);
+  console.log(`Server Started  : ${url}`);
 });
