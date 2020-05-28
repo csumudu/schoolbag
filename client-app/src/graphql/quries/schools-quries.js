@@ -5,6 +5,19 @@ export const SEARCH_SCHOOLS = gql`
     allSchools {
       id
       name
+      noOfStudents
+      email
+      addressLineOne
+      addressLineTwo
+      addressLineThree
+    }
+  }
+`;
+
+export const REGISTER_SCHOOL = gql`
+  mutation register($school: SchoolParam!) {
+    addSchool(school: $school) {
+      success
     }
   }
 `;

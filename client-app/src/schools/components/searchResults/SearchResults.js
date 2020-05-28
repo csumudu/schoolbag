@@ -4,29 +4,37 @@ const columns = [
   {
     title: "Name",
     dataIndex: "name",
+    width: 200,
     key: "name",
   },
   {
-    title: "Age",
-    dataIndex: "age",
-    key: "age",
+    title: "No of Students",
+    width: 150,
+    dataIndex: "noOfStudents",
+    key: "noOfStudents",
+  },
+  {
+    title: "Email",
+    dataIndex: "email",
+    key: "email",
   },
   {
     title: "Address",
-    dataIndex: "address",
     key: "address",
-  },
-  {
-    title: "Tags",
-    key: "tags",
-    dataIndex: "tags",
+    render: (text, record) => (
+      <>
+        <div>{record.addressLineOne}</div>
+        <div>{record.addressLineTwo}</div>
+        <div>{record.addressLineThree}</div>
+      </>
+    ),
   },
   {
     title: "Action",
     key: "action",
     render: (text, record) => (
       <Space size="middle">
-        <a>Invite {record.name}</a>
+        <a>Edit </a>
         <a>Delete</a>
       </Space>
     ),

@@ -4,6 +4,11 @@ const schoolsTypes = gql`
   type School {
     id: String
     name: String
+    noOfStudents: Int
+    email: String
+    addressLineOne: String
+    addressLineTwo: String
+    addressLineThree: String
   }
 
   type SchoolResponse {
@@ -13,6 +18,11 @@ const schoolsTypes = gql`
 
   input SchoolParam {
     name: String
+    noOfStudents: Int
+    email: String
+    addressLineOne: String
+    addressLineTwo: String
+    addressLineThree: String
   }
 `;
 

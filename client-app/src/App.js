@@ -129,7 +129,7 @@ class App extends React.Component {
             </Content>
           </Layout>
         </Content>
-        <Footer style={{ textAlign: "center" }}>©2020 Created by Sumudu</Footer>
+       
       </Layout>
     );
   }

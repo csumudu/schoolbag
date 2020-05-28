@@ -1,6 +1,10 @@
-@import '~antd/dist/antd.css';
+@import "~antd/dist/antd.css";
 
 body {
   margin: 0;
   text-align: left;
+}
+
+#root {
+  height: 100%;
 }
