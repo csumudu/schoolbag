@@ -1,9 +1,18 @@
 const db = require("../../data");
 
 class SchoolsService {
-  async getAllSchools() {
+  async getAllSchools(offset, pageSize) {
     const schools = db.schools.getData("/allSchools") || [];
-    return schools;
+    const filtered = schools
+      .sort((a, b) => (a.id < b.id ? 1 : a.id > b.id ? -1 : 0))
+      .filter((s, i) => i >= offset && i < offset + pageSize);
+
+    return {
+      noOfRecords: schools.length,
+      offset,
+      pageSize,
+      schools: filtered,
+    };
   }
 
   async addSchool(school) {

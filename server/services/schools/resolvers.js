@@ -1,7 +1,7 @@
 const resolvers = {
   Query: {
-    allSchools(_, __, { dataSources }) {
-      return dataSources.schoolsService.getAllSchools();
+    allSchools(_, { offset = 0, pageSize = 10 }, { dataSources }) {
+      return dataSources.schoolsService.getAllSchools(offset, pageSize);
     },
   },
   Mutation: {

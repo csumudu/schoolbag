@@ -14,11 +14,6 @@ const columns = [
     key: "noOfStudents",
   },
   {
-    title: "Email",
-    dataIndex: "email",
-    key: "email",
-  },
-  {
     title: "Address",
     key: "address",
     render: (text, record) => (
@@ -30,7 +25,13 @@ const columns = [
     ),
   },
   {
+    title: "Email",
+    dataIndex: "email",
+    key: "email",
+  },
+  {
     title: "Action",
+    width: 100,
     key: "action",
     render: (text, record) => (
       <Space size="middle">
@@ -41,10 +42,22 @@ const columns = [
   },
 ];
 
-const SearchResults = ({ data }) => {
+const SearchResults = ({ data, pageSize, onPaginationChange }) => {
   return (
     <div>
-      <Table columns={columns} dataSource={data} />
+      <Table
+        columns={columns}
+        dataSource={data && data.schools}
+        pagination={
+          pageSize
+            ? {
+                pageSize,
+                total: data && data.noOfRecords,
+                onChange: onPaginationChange,
+              }
+            : false
+        }
+      />
     </div>
   );
 };

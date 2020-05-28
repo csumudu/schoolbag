@@ -1,6 +1,13 @@
 const { gql } = require("apollo-server");
 
 const schoolsTypes = gql`
+  type PaginatedSchoolsRes {
+    noOfRecords: Int
+    offset: Int
+    pageSize: Int
+    schools: [School]
+  }
+
   type School {
     id: String
     name: String

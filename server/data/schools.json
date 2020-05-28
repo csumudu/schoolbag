@@ -1,20 +1,22 @@
 {
     "allSchools": [
         {
-            "name": "test",
-            "id": "1590594337668"
+            "name": "last",
+            "noOfStudents": 10,
+            "email": "test@shs.co",
+            "addressLineOne": "one",
+            "addressLineTwo": "two",
+            "addressLineThree": "three",
+            "id": "1590681557430"
         },
         {
-            "name": "tsssest",
-            "id": "1590594765179"
-        },
-        {
-            "name": "tsssffest",
-            "id": "1590594773342"
-        },
-        {
-            "name": "tsssffest",
-            "id": "1590594774816"
+            "name": "Sumudu Chinthaka Jayasinghe",
+            "noOfStudents": 32,
+            "email": "csumudu@gmail.com",
+            "addressLineOne": "11/5, 1st lane",
+            "addressLineTwo": "Egodawattha",
+            "addressLineThree": "Sri Mahal",
+            "id": "1590679203740"
         },
         {
             "name": "test",
@@ -26,13 +28,13 @@
             "id": "1590678810453"
         },
         {
-            "name": "Sumudu Chinthaka Jayasinghe",
-            "noOfStudents": 32,
+            "name": "deeeeeee",
+            "noOfStudents": 222,
             "email": "csumudu@gmail.com",
             "addressLineOne": "11/5, 1st lane",
             "addressLineTwo": "Egodawattha",
-            "addressLineThree": "Sri Mahal",
-            "id": "1590679203740"
+            "addressLineThree": "www",
+            "id": "1590682373353"
         }
     ]
 }
