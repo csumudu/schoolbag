@@ -1,7 +1,12 @@
 import React from "react";
 import { Layout, Menu, Breadcrumb } from "antd";
 import { AppMenu } from "./shared/services/MenuProvider";
+import { Switch, Route, withRouter } from "react-router-dom";
 import "./App.scss";
+import SchoolSearchPage from "./schools/containers/SchoolSearchPage";
+import RegisterSchoolPage from "./schools/containers/RegisterSchoolPage";
+import EventsPage from "./events/containers/EventsPage";
+import PaymentsPage from "./payments/containers/PaymentsPage";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -11,6 +16,32 @@ class App extends React.Component {
     selectedMenu: AppMenu[0],
     selectedSubMenu: AppMenu[0].children && AppMenu[0].children[0],
   };
+
+  componentDidMount() {
+    const { history } = this.props;
+    if (this.state.selectedSubMenu && this.state.selectedSubMenu.route) {
+      history.push(this.state.selectedSubMenu.route);
+    } else if (this.state.selectedMenu && this.state.selectedMenu.route) {
+      history.push(this.state.selectedMenu.route);
+    }
+  }
+
+  componentDidUpdate(preProps, preState) {
+    const { history } = this.props;
+    if (
+      this.state.selectedSubMenu &&
+      this.state.selectedSubMenu.route &&
+      this.state.selectedSubMenu !== preState.selectedSubMenu
+    ) {
+      history.push(this.state.selectedSubMenu.route);
+    } else if (
+      this.state.selectedMenu &&
+      this.state.selectedMenu.route &&
+      this.state.selectedMenu !== preState.selectedMenu
+    ) {
+      history.push(this.state.selectedMenu.route);
+    }
+  }
 
   toggle = () => {
     this.setState({
@@ -78,7 +109,23 @@ class App extends React.Component {
               </Sider>
             )}
             <Content style={{ padding: "0 24px", minHeight: 280 }}>
-              Content here
+              <Switch>
+                <Route path="/schools/search">
+                  <SchoolSearchPage />
+                </Route>
+                <Route path="/schools/register">
+                  <RegisterSchoolPage />
+                </Route>
+                <Route path="/schools">
+                  <SchoolSearchPage />
+                </Route>
+                <Route path="/events">
+                  <EventsPage />
+                </Route>
+                <Route path="/payments">
+                  <PaymentsPage />
+                </Route>
+              </Switch>
             </Content>
           </Layout>
         </Content>
@@ -88,4 +135,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);

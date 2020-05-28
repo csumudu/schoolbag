@@ -3,20 +3,20 @@ export const AppMenu = [
     id: "100",
     name: "Schools",
     icon: "",
-    route: "",
+    route: "/schools",
     children: [
       {
         id: "101",
         name: "Search",
         icon: "",
-        route: "",
+        route: "/schools/search",
         children: [],
       },
       {
         id: "102",
         name: "Register",
         icon: "",
-        route: "",
+        route: "/schools/register",
         children: [],
       },
     ],
@@ -25,12 +25,12 @@ export const AppMenu = [
     id: "200",
     name: "Events",
     icon: "",
-    route: "",
+    route: "/events",
   },
   {
     id: "300",
     name: "Payments",
     icon: "",
-    route: "",
+    route: "/payments",
   },
 ];
