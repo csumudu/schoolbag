@@ -4,11 +4,15 @@ import "./index.scss";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ApolloProvider } from "@apollo/react-hooks";
+import graphqlClient from "./graphql";
 
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <ApolloProvider client={graphqlClient}>
+    <Router>
+      <App />
+    </Router>
+  </ApolloProvider>,
   document.getElementById("root")
 );
 
