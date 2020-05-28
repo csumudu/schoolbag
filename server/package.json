@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server:schools": "node services/schools/index.js",
+    "server:graphql": "node index.js",
+    "start": "concurrently -k npm:server:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/federation": "^0.16.0",
+    "@apollo/gateway": "^0.16.1",
+    "apollo-server": "^2.13.1",
+    "concurrently": "^5.2.0",
+    "graphql": "^15.0.0",
+    "node-json-db": "^1.1.0"
+  }
+}
