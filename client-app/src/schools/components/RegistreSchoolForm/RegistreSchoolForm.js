@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, Input, Button, Checkbox, InputNumber } from "antd";
 
 const layout = {
@@ -9,8 +9,14 @@ const tailLayout = {
   wrapperCol: { offset: 4, span: 16 },
 };
 
-const RegistreSchoolForm = ({ onSubmit }) => {
+const RegistreSchoolForm = ({ onSubmit, reset }) => {
   const [form] = Form.useForm();
+
+  useEffect(() => {
+    if (reset) {
+      form.resetFields();
+    }
+  }, [reset, form]);
 
   const onFinish = (values) => {
     onSubmit(values);

@@ -46,6 +46,7 @@ const SearchResults = ({ data, pageSize, onPaginationChange }) => {
   return (
     <div>
       <Table
+        rowKey="id"
         columns={columns}
         dataSource={data && data.schools}
         pagination={

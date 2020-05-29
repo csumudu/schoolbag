@@ -13,34 +13,38 @@ const { Header, Content, Footer, Sider } = Layout;
 class App extends React.Component {
   state = {
     collapsed: false,
-    selectedMenu: AppMenu[0],
-    selectedSubMenu: AppMenu[0].children && AppMenu[0].children[0],
+    subMenu: [],
+    selectedMenu: {},
+    selectedSubMenu: {},
   };
 
-  componentDidMount() {
-    const { history } = this.props;
-    if (this.state.selectedSubMenu && this.state.selectedSubMenu.route) {
-      history.push(this.state.selectedSubMenu.route);
-    } else if (this.state.selectedMenu && this.state.selectedMenu.route) {
-      history.push(this.state.selectedMenu.route);
-    }
-  }
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { history } = nextProps;
 
-  componentDidUpdate(preProps, preState) {
-    const { history } = this.props;
-    if (
-      this.state.selectedSubMenu &&
-      this.state.selectedSubMenu.route &&
-      this.state.selectedSubMenu !== preState.selectedSubMenu
-    ) {
-      history.push(this.state.selectedSubMenu.route);
-    } else if (
-      this.state.selectedMenu &&
-      this.state.selectedMenu.route &&
-      this.state.selectedMenu !== preState.selectedMenu
-    ) {
-      history.push(this.state.selectedMenu.route);
+    let path = history.location.pathname;
+
+    const [item] = AppMenu.filter((m) => m.route.includes(path));
+
+    if (item) {
+      if (prevState.selectedMenu.id !== item.id) {
+        if (!item.parentId) {
+          const allSub = AppMenu.filter((m) => m.parentId === item.id);
+
+          return {
+            selectedMenu: item,
+            subMenu: allSub,
+            selectedSubMenu: allSub.length && allSub[0],
+          };
+        } else {
+          return {
+            selectedSubMenu: item,
+            selectedMenu: AppMenu.filter((m) => m.id === item.parentId)[0],
+            subMenu: AppMenu.filter((m) => m.parentId === item.parentId),
+          };
+        }
+      }
     }
+    return null;
   }
 
   toggle = () => {
@@ -50,17 +54,11 @@ class App extends React.Component {
   };
 
   menuChangeHandler = ({ key }) => {
+    const { history } = this.props;
     const menu = AppMenu.filter((m) => m.id === key)[0];
-    this.setState({
-      selectedMenu: menu,
-      selectedSubMenu: menu.children && menu.children[0],
-    });
-  };
-
-  subMenuChangeHandler = ({ key }) => {
-    this.setState((s) => ({
-      selectedSubMenu: s.selectedMenu.children.filter((m) => m.id === key)[0],
-    }));
+    if (menu && menu.route) {
+      history.push(menu.route[0]);
+    }
   };
 
   render() {
@@ -71,10 +69,10 @@ class App extends React.Component {
           <Menu
             theme="dark"
             mode="horizontal"
-            defaultSelectedKeys={[this.state.selectedMenu.id]}
+            selectedKeys={[this.state.selectedMenu.id]}
             onSelect={this.menuChangeHandler}
           >
-            {AppMenu.map((m) => (
+            {AppMenu.filter((m) => !m.parentId).map((m) => (
               <Menu.Item key={m.id}>{m.name}</Menu.Item>
             ))}
           </Menu>
@@ -82,34 +80,37 @@ class App extends React.Component {
         <Content style={{ padding: "0 50px" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>
             <Breadcrumb.Item>{this.state.selectedMenu.name}</Breadcrumb.Item>
-            {this.state.selectedSubMenu && (
+            {this.state.selectedSubMenu ? (
               <Breadcrumb.Item>
                 {this.state.selectedSubMenu.name}
               </Breadcrumb.Item>
-            )}
+            ) : null}
           </Breadcrumb>
           <Layout
             className="site-layout-background"
             style={{ padding: "24px 0" }}
           >
-            {this.state.selectedMenu && this.state.selectedMenu.children && (
+            {this.state.subMenu.length ? (
               <Sider className="site-layout-background" width={200}>
                 <Menu
                   mode="inline"
-                  defaultSelectedKeys={[
+                  selectedKeys={[
                     this.state.selectedSubMenu && this.state.selectedSubMenu.id,
                   ]}
                   style={{ height: "100%" }}
-                  onSelect={this.subMenuChangeHandler}
+                  onSelect={this.menuChangeHandler}
                 >
-                  {this.state.selectedMenu.children.map((m) => (
+                  {this.state.subMenu.map((m) => (
                     <Menu.Item key={m.id}>{m.name}</Menu.Item>
                   ))}
                 </Menu>
               </Sider>
-            )}
+            ) : null}
             <Content style={{ padding: "0 24px", minHeight: 280 }}>
               <Switch>
+                <Route path="/schools/search/:isRefetch">
+                  <SchoolSearchPage />
+                </Route>
                 <Route path="/schools/search">
                   <SchoolSearchPage />
                 </Route>
@@ -125,11 +126,13 @@ class App extends React.Component {
                 <Route path="/payments">
                   <PaymentsPage />
                 </Route>
+                <Route path="/">
+                  <SchoolSearchPage />
+                </Route>
               </Switch>
             </Content>
           </Layout>
         </Content>
-       
       </Layout>
     );
   }

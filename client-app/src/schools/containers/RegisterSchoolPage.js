@@ -1,38 +1,42 @@
 import React, { useEffect } from "react";
-import { PageHeader } from "antd";
+import { PageHeader, Button } from "antd";
 import { Card } from "antd";
 import RegistreSchoolForm from "../components/RegistreSchoolForm/RegistreSchoolForm";
 import "./RegisterSchoolPage.scss";
-import { useLazyQuery, useMutation } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/react-hooks";
+import { withRouter } from "react-router-dom";
 import * as quries from "../../graphql/quries";
 import SearchResults from "../components/searchResults/SearchResults";
+import { useNotification } from "../../shared/hooks/useNotification";
 
 const pageSize = 2;
 
-const RegisterSchoolPage = () => {
-  const [register, { loading, data, error }] = useMutation(
+const RegisterSchoolPage = ({ history }) => {
+  const { success, error } = useNotification();
+
+  const [register, { loading, data, error: registrationError }] = useMutation(
     quries.REGISTER_SCHOOL
   );
 
-  const [searchSchools, { data: { allSchools } = {} }] = useLazyQuery(
+  const { data: { allSchools } = {}, refetch } = useQuery(
     quries.SEARCH_SCHOOLS,
     {
-      fetchPolicy: "network-only",
+      variables: {
+        offset: 0,
+        pageSize: 2,
+      },
     }
   );
 
-  const load = () => {
-    searchSchools({
-      variables: {
-        offset: 0,
-        pageSize: pageSize,
-      },
-    });
-  };
-
   useEffect(() => {
-    load();
-  }, [searchSchools, data]);
+    if (data) {
+      refetch();
+      success("Success", "New School registration was successfull");
+    }
+    if (registrationError) {
+      error("Registration Error", "New School registration was unsuccessfull");
+    }
+  }, [data, registrationError]);
 
   const onSubmitHandler = (school) => {
     register({
@@ -40,6 +44,10 @@ const RegisterSchoolPage = () => {
         school,
       },
     });
+  };
+
+  const viewAllHandler = () => {
+    history.push("/schools/search/all");
   };
 
   return (
@@ -51,16 +59,22 @@ const RegisterSchoolPage = () => {
       />
       <div>
         <Card>
-          <RegistreSchoolForm onSubmit={onSubmitHandler} />
+          <RegistreSchoolForm reset={data} onSubmit={onSubmitHandler} />
         </Card>
       </div>
       <div style={{ paddingTop: 10 }}>
         <Card>
+          <h3 style={{ paddingBottom: 10 }}>Recently Added Schools</h3>
           <SearchResults data={allSchools} />
+          <div className="btn-con">
+            <Button type="link" onClick={viewAllHandler}>
+              View all
+            </Button>
+          </div>
         </Card>
       </div>
     </div>
   );
 };
 
-export default RegisterSchoolPage;
+export default withRouter(RegisterSchoolPage);
