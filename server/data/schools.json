@@ -1,139 +1,39 @@
 {
     "allSchools": [
         {
-            "name": "S c jayasinghe 55555555555",
-            "email": "csumudu@gmail.com",
-            "addressLineOne": "Sri Mahal",
-            "addressLineTwo": "Madakubbura",
-            "id": "1590718066705"
+            "name": "CALINGIRI PRIMARY SCHOOL",
+            "noOfStudents": 1200,
+            "email": "info@calingiri.com",
+            "addressLineOne": "18 CAVELL STREET",
+            "addressLineTwo": "CALINGIRI ",
+            "addressLineThree": "WA, 6569",
+            "id": "1590767563541"
         },
         {
-            "name": "Lucile Harding100000000000 ",
-            "email": "csumudu@gmail.com",
-            "addressLineOne": "11/5, 1st lane",
-            "addressLineTwo": "Egodawattha Road",
-            "id": "1590717785627"
+            "name": "BIRLIRR NGAWIYIWU CATHOLIC SCHOOL",
+            "noOfStudents": 500,
+            "email": "info@birlirr.com",
+            "addressLineOne": "RINGER SOAK (KUNDAT DJARU COMM)",
+            "addressLineTwo": "VIA HALLS CREEK",
+            "addressLineThree": "WA, 6770",
+            "id": "1590767481349"
         },
         {
-            "name": "jayasinghe - 500",
-            "email": "csumudu@gmail.com",
-            "addressLineOne": "Sri Mahal",
-            "addressLineTwo": "Nugegoda",
-            "id": "1590717502627"
+            "name": "Ambarvale Public School",
+            "noOfStudents": 2500,
+            "email": "info@ambarvale.com",
+            "addressLineOne": "HOTCHIN STREET",
+            "addressLineTwo": "SOUTH BUNBURY",
+            "addressLineThree": "WA, 6230 ",
+            "id": "1590767408137"
         },
         {
-            "name": "Lucile Harding3333333333",
-            "noOfStudents": 222,
-            "email": "csumudu@gmail.com",
-            "addressLineOne": "11/5, 1st lane",
-            "addressLineTwo": "Egodawattha Road",
-            "id": "1590717317451"
-        },
-        {
-            "name": "kamala",
-            "noOfStudents": 28,
-            "email": "csumudu@gmail.com",
-            "addressLineOne": "Sri Mahal",
-            "addressLineTwo": "Nugegoda",
-            "id": "1590717290319"
-        },
-        {
-            "name": "Lucile Harding 100",
-            "noOfStudents": 52,
-            "email": "csumudu@gmail.com",
-            "addressLineOne": "11/5, 1st lane",
-            "addressLineTwo": "Egodawattha Road",
-            "id": "1590717109931"
-        },
-        {
-            "name": "Last in",
-            "noOfStudents": 29,
-            "email": "csumudu@gmail.com",
-            "addressLineOne": "Sri Mahal",
-            "addressLineTwo": "Nugegoda",
-            "id": "1590717061315"
-        },
-        {
-            "name": "dddddddd",
-            "noOfStudents": 23,
-            "email": "csumudu@gmail.com",
-            "addressLineOne": "11/5, 1st lane",
-            "addressLineTwo": "Egodawattha",
-            "id": "1590716757004"
-        },
-        {
-            "name": "Higgins Pace",
-            "noOfStudents": 23,
-            "email": "higginspace@hotmail.com",
-            "addressLineOne": "102/1, first lane, Rubberwattha rd,gangodawilla",
-            "addressLineTwo": "Nugegoda",
-            "id": "1590716446357"
-        },
-        {
-            "name": "jayasinghe",
-            "email": "csumudu@gmail.com",
-            "addressLineOne": "Sri Mahal",
-            "addressLineTwo": "Nugegoda",
-            "id": "1590715099301"
-        },
-        {
-            "name": "ss ss -ss  ss - ss",
-            "noOfStudents": 54,
-            "email": "csumudu@gmail.com",
-            "addressLineOne": "Line 1",
-            "addressLineTwo": "Line 2",
-            "id": "1590714317964"
-        },
-        {
-            "name": "Lucile Harding",
-            "noOfStudents": 20,
-            "email": "csumudu@gmail.com",
-            "addressLineOne": "11/5, 1st lane",
-            "addressLineTwo": "Egodawattha Road",
-            "id": "1590713958305"
-        },
-        {
-            "name": "deeeeeee",
-            "noOfStudents": 222,
-            "email": "csumudu@gmail.com",
-            "addressLineOne": "11/5, 1st lane",
-            "addressLineTwo": "Egodawattha",
-            "addressLineThree": "www",
-            "id": "1590682373353"
-        },
-        {
-            "name": "last",
-            "noOfStudents": 10,
-            "email": "test@shs.co",
-            "addressLineOne": "one",
-            "addressLineTwo": "two",
-            "addressLineThree": "three",
-            "id": "1590681557430"
-        },
-        {
-            "name": "Sumudu Chinthaka Jayasinghe",
-            "noOfStudents": 32,
-            "email": "csumudu@gmail.com",
-            "addressLineOne": "11/5, 1st lane",
-            "addressLineTwo": "Egodawattha",
-            "addressLineThree": "Sri Mahal",
-            "id": "1590679203740"
-        },
-        {
-            "name": "test",
-            "noOfStudents": 10,
-            "email": "test@shs.co",
-            "addressLineOne": "one",
-            "addressLineTwo": "two",
-            "addressLineThree": "three",
-            "id": "1590678810453"
-        },
-        {
-            "name": "jayasinghe - 544444",
-            "email": "csumudu@gmail.com",
-            "addressLineOne": "Sri Mahal",
-            "addressLineTwo": "Nugegoda",
-            "id": "1590721864240"
+            "name": "DIANELLA SECONDARY COLLEGE EDUCATION SUPPORT CENTRE",
+            "noOfStudents": 1200,
+            "addressLineOne": "9 LAYTHORNE STREET",
+            "addressLineTwo": " DIANELLA ",
+            "addressLineThree": "WA, 6059",
+            "id": "1590767690408"
         }
     ]
 }

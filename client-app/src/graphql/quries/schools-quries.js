@@ -1,8 +1,20 @@
 import { gql } from "apollo-boost";
 
 export const SEARCH_SCHOOLS = gql`
-  query allSchools($offset: Int, $pageSize: Int) {
-    allSchools(offset: $offset, pageSize: $pageSize) {
+  query allSchools(
+    $name: String
+    $address: String
+    $email: String
+    $offset: Int
+    $pageSize: Int
+  ) {
+    allSchools(
+      name: $name
+      address: $address
+      email: $email
+      offset: $offset
+      pageSize: $pageSize
+    ) {
       noOfRecords
       offset
       pageSize

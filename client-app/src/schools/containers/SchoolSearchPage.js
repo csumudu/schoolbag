@@ -4,11 +4,13 @@ import SearchFilterForm from "../components/searchFilterForm/SearchFilterForm";
 import { useLazyQuery } from "@apollo/react-hooks";
 import * as quries from "../../graphql/quries";
 import { withRouter } from "react-router-dom";
+import { PageHeader } from "antd";
 
 const pageSize = 10;
 
 const SchoolSearchPage = ({ match: { params: { isRefetch } = {} } }) => {
   const [pageNo, setPageNo] = useState(0);
+  const [filters, setFilters] = useState({});
 
   const [searchSchools, { data: { allSchools } = {}, refetch }] = useLazyQuery(
     quries.SEARCH_SCHOOLS
@@ -17,13 +19,13 @@ const SchoolSearchPage = ({ match: { params: { isRefetch } = {} } }) => {
   useEffect(() => {
     searchSchools({
       variables: {
+        ...filters,
         offset: pageNo * pageSize,
         pageSize: pageSize,
       },
     });
-  }, [searchSchools, pageNo]);
+  }, [searchSchools, pageNo, filters]);
 
-  
   useEffect(() => {
     if (isRefetch && refetch) {
       refetch();
@@ -34,10 +36,19 @@ const SchoolSearchPage = ({ match: { params: { isRefetch } = {} } }) => {
     setPageNo(e - 1);
   };
 
+  const filterChangeHandler = (f) => {
+    setFilters(f);
+  };
+
   return (
     <div>
-      <div>
-        <SearchFilterForm />
+      <PageHeader
+        className="site-page-header"
+        backIcon={false}
+        title="All Registered Schools"
+      />
+      <div style={{ paddingBottom: 20, paddingTop: 5 }}>
+        <SearchFilterForm onFilterChanged={filterChangeHandler} />
       </div>
       <div>
         <SearchResults

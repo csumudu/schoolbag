@@ -2,7 +2,7 @@ import React from "react";
 import { Table, Tag, Space } from "antd";
 const columns = [
   {
-    title: "Name",
+    title: "School Name",
     dataIndex: "name",
     width: 200,
     key: "name",

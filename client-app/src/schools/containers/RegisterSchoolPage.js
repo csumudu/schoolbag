@@ -9,7 +9,7 @@ import * as quries from "../../graphql/quries";
 import SearchResults from "../components/searchResults/SearchResults";
 import { useNotification } from "../../shared/hooks/useNotification";
 
-const pageSize = 2;
+const pageSize = 5;
 
 const RegisterSchoolPage = ({ history }) => {
   const { success, error } = useNotification();
@@ -43,7 +43,7 @@ const RegisterSchoolPage = ({ history }) => {
       variables: {
         school,
       },
-    });
+    }).catch((e) => e);
   };
 
   const viewAllHandler = () => {
